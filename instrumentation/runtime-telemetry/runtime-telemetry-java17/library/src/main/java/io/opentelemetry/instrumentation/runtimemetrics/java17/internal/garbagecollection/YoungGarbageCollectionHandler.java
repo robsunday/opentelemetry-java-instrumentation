@@ -5,6 +5,8 @@
 
 package io.opentelemetry.instrumentation.runtimemetrics.java17.internal.garbagecollection;
 
+import static io.opentelemetry.instrumentation.runtimemetrics.java17.internal.DurationUtil.millisToSeconds;
+
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.DoubleHistogram;
 import io.opentelemetry.api.metrics.Meter;
@@ -41,7 +43,8 @@ public final class YoungGarbageCollectionHandler implements RecordedEventHandler
 
   @Override
   public void accept(RecordedEvent ev) {
-    histogram.record(ev.getDouble(Constants.DURATION), attributes);
+    long duration = ev.getLong(Constants.DURATION);
+    histogram.record(millisToSeconds(duration), attributes);
   }
 
   @Override
