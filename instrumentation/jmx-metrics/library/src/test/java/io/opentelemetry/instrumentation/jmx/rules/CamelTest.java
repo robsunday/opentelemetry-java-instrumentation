@@ -12,7 +12,6 @@ import static java.util.Collections.singletonList;
 import io.opentelemetry.instrumentation.jmx.rules.assertions.AttributeMatcherGroup;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
